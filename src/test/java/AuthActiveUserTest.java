@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
@@ -31,7 +29,7 @@ public class AuthActiveUserTest {
         $("[data-test-id='password'] .input__control").setValue(user.getPassword());
         $("[data-test-id='action-login']").submit();
 
-        $(withText("Ошибка")).shouldBe(visible);
+        $(withText("Ошибка1111")).shouldBe(visible);
         String text = $("[data-test-id='error-notification'] .notification__content").getText().replaceAll("\\s\\s*", " ");
         assertEquals("Ошибка! Неверно указан логин или пароль", text);
     }
