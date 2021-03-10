@@ -11,7 +11,7 @@ public class AuthBlockedUserTest {
     User user = DataGenerator.Generator.generatePersonWithRegistration("blocked","en");
 
     @Test
-    void WrongPasswordAuthTest (){
+    void wrongPasswordAuthTest (){
         open("http://localhost:9999");
         $("[data-test-id='login'] .input__control").setValue(user.getLogin());
         $("[data-test-id='password'] .input__control").setValue(user.getPassword() + "1");
@@ -23,7 +23,7 @@ public class AuthBlockedUserTest {
     }
 
     @Test
-    void WrongUsernameAuthTest (){
+    void wrongUsernameAuthTest (){
         open("http://localhost:9999");
         $("[data-test-id='login'] .input__control").setValue(user.getLogin() + "1");
         $("[data-test-id='password'] .input__control").setValue(user.getPassword());
@@ -35,7 +35,7 @@ public class AuthBlockedUserTest {
     }
 
     @Test
-    void ValidDataAuthTest (){
+    void validDataAuthTest (){
         open("http://localhost:9999");
         $("[data-test-id='login'] .input__control").setValue(user.getLogin());
         $("[data-test-id='password'] .input__control").setValue(user.getPassword());

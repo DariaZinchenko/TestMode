@@ -11,7 +11,7 @@ public class AuthActiveUserTest {
     User user = DataGenerator.Generator.generatePersonWithRegistration("active","en");
 
     @Test
-    void WrongPasswordAuthTest (){
+    void wrongPasswordAuthTest (){
         open("http://localhost:9999");
         $("[data-test-id='login'] .input__control").setValue(user.getLogin());
         $("[data-test-id='password'] .input__control").setValue(user.getPassword() + "1");
@@ -23,19 +23,19 @@ public class AuthActiveUserTest {
     }
 
     @Test
-    void WrongUsernameAuthTest (){
+    void wrongUsernameAuthTest (){
         open("http://localhost:9999");
         $("[data-test-id='login'] .input__control").setValue(user.getLogin() + "1");
         $("[data-test-id='password'] .input__control").setValue(user.getPassword());
         $("[data-test-id='action-login']").submit();
 
-        $(withText("Ошибка1111")).shouldBe(visible);
+        $(withText("Ошибка")).shouldBe(visible);
         String text = $("[data-test-id='error-notification'] .notification__content").getText().replaceAll("\\s\\s*", " ");
         assertEquals("Ошибка! Неверно указан логин или пароль", text);
     }
 
     @Test
-    void ValidDataAuthTest (){
+    void validDataAuthTest (){
         open("http://localhost:9999");
         $("[data-test-id='login'] .input__control").setValue(user.getLogin());
         $("[data-test-id='password'] .input__control").setValue(user.getPassword());
